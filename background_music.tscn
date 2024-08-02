@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwyk7hfwyi5cy"]
+[gd_scene load_steps=5 format=3 uid="uid://cwyk7hfwyi5cy"]
 
 [ext_resource type="AudioStream" uid="uid://bnruf6ngxlqx7" path="res://assets/background_music/CrashedShip.ogg" id="1_c7hga"]
 [ext_resource type="AudioStream" uid="uid://6073d10ng8ay" path="res://assets/background_music/Space_Idea.ogg" id="2_irk6k"]
+[ext_resource type="AudioStream" uid="uid://bge2albky725q" path="res://assets/background_music/scifi.ogg" id="3_cghpw"]
+[ext_resource type="AudioStream" uid="uid://b5qswfft08tce" path="res://assets/background_music/space.ogg" id="4_cl5gh"]
 
 [node name="BackgroundMusic" type="Node2D"]
 
@@ -10,3 +12,9 @@ stream = ExtResource("1_c7hga")
 
 [node name="game" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_irk6k")
+
+[node name="game2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_cghpw")
+
+[node name="game3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_cl5gh")

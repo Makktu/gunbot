@@ -10,7 +10,7 @@ var start_wave_speed = [2.0, 10.0]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	gunbot.connect("bullet_shot", _on_gunbot_bullet_shot)
-	$BackgroundMusic/game.play()
+	$BackgroundMusic/game3.play()
 	new_game()
 	
 func _on_gunbot_bullet_shot(bullet):

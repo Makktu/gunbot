@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@onready var explosion = $CPUParticles2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -7,15 +8,9 @@ func _ready():
 	scale.y = 0.2
 	$AnimationPlayer.play('fade_in')
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 	
 func _physics_process(delta):
 	var collision_info = move_and_collide(velocity * delta)
-	#if collision_info:
-		#print(collision_info)
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
@@ -24,4 +19,10 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 
 func _on_collision_area_area_entered(area):
 	if area.name == 'bullet_area':
-		queue_free()
+		explosion.emitting = true
+		$Sprite2D.visible = false
+
+
+func _on_cpu_particles_2d_finished():
+	print('ehehe?')
+	queue_free()

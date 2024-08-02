@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bx5jfa0rj3eeu"]
+[gd_scene load_steps=8 format=3 uid="uid://bx5jfa0rj3eeu"]
 
 [ext_resource type="Script" path="res://organic.gd" id="1_qlyfw"]
 [ext_resource type="Texture2D" uid="uid://b7fhxhrn2mssh" path="res://asteroidpng.png" id="2_ucgop"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_apnnu"]
-radius = 95.0
+radius = 59.0
 
 [sub_resource type="Animation" id="Animation_qiusp"]
 length = 0.001
@@ -42,6 +42,9 @@ _data = {
 "fade_in": SubResource("Animation_fka7f")
 }
 
+[sub_resource type="Gradient" id="Gradient_y03fg"]
+colors = PackedColorArray(3.51354e-06, 0.77038, 3.08037e-06, 1, 1, 1, 1, 0)
+
 [node name="organic" type="CharacterBody2D"]
 skew = -0.0314159
 collision_mask = 3
@@ -58,10 +61,10 @@ shape = SubResource("CircleShape2D_apnnu")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
-[node name="collision_area" type="Area2D" parent="."]
+[node name="organic_collision" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="collision_area"]
-position = Vector2(-5.15713, 5.00247)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="organic_collision"]
+position = Vector2(-2.15713, 5.00247)
 shape = SubResource("CircleShape2D_apnnu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -69,5 +72,30 @@ libraries = {
 "": SubResource("AnimationLibrary_v83wh")
 }
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = 10
+emitting = false
+amount = 100
+lifetime = 15.0
+one_shot = true
+speed_scale = 17.41
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 6.62
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 147.06
+angular_velocity_min = 14.12
+angular_velocity_max = 56.47
+scale_amount_min = 7.71
+scale_amount_max = 19.71
+color = Color(0, 0.866667, 0.0235294, 1)
+color_ramp = SubResource("Gradient_y03fg")
+hue_variation_min = 0.01
+hue_variation_max = 0.19
+
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
-[connection signal="area_entered" from="collision_area" to="." method="_on_collision_area_area_entered"]
+[connection signal="area_entered" from="organic_collision" to="." method="_on_collision_area_area_entered"]
+[connection signal="finished" from="CPUParticles2D" to="." method="_on_cpu_particles_2d_finished"]
