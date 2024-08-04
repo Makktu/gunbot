@@ -1,16 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://m63vthakh13d"]
+[gd_scene load_steps=9 format=3 uid="uid://m63vthakh13d"]
 
 [ext_resource type="PackedScene" uid="uid://ci7omqwvvokar" path="res://gunbot.tscn" id="1_8oxju"]
 [ext_resource type="Script" path="res://world.gd" id="1_u5o0q"]
 [ext_resource type="PackedScene" uid="uid://bx5jfa0rj3eeu" path="res://organic.tscn" id="2_oemh6"]
 [ext_resource type="PackedScene" uid="uid://cwyk7hfwyi5cy" path="res://background_music.tscn" id="4_8l7o7"]
 [ext_resource type="Texture2D" uid="uid://spv7cfunw8px" path="res://assets/graphics/nebulaset.png" id="5_p7gei"]
+[ext_resource type="Script" path="res://ScoreLabel.gd" id="6_w0sqm"]
 
 [sub_resource type="Curve2D" id="Curve2D_51yh6"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -1, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 480, 720, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0)
 }
 point_count = 7
+
+[sub_resource type="Theme" id="Theme_73gup"]
 
 [node name="world" type="Node"]
 script = ExtResource("1_u5o0q")
@@ -39,6 +42,22 @@ z_index = -10
 texture = ExtResource("5_p7gei")
 
 [node name="bullets_shot" type="Node2D" parent="."]
+
+[node name="UserInterface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_73gup")
+
+[node name="ScoreLabel" type="Label" parent="UserInterface"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 85.0
+offset_bottom = 47.0
+text = "Score: 0"
+script = ExtResource("6_w0sqm")
 
 [connection signal="hit" from="gunbot" to="." method="game_over"]
 [connection signal="timeout" from="OrganicTimer" to="." method="_on_organic_timer_timeout"]

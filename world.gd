@@ -4,10 +4,8 @@ extends Node
 @onready var bullets = $bullets_shot
 @onready var gunbot = $gunbot
 var score
+var start_wave_speed = [5.0, 20.0]
 
-var start_wave_speed = [2.0, 10.0]
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	gunbot.connect("bullet_shot", _on_gunbot_bullet_shot)
 	$BackgroundMusic/game3.play()
@@ -15,20 +13,17 @@ func _ready():
 	
 func _on_gunbot_bullet_shot(bullet):
 	bullets.add_child(bullet)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
+	
 func game_over():
 	$OrganicTimer.stop()
+	print('Game Over!')
+	await get_tree().create_timer(3).timeout
+	new_game()
 	
 func new_game():
+	print('new game...')
 	$gunbot.start($Position.position)
 	$OrganicTimer.start()
-
 
 func _on_organic_timer_timeout():
 	# Create a new instance of the Mob scene.
@@ -54,3 +49,5 @@ func _on_organic_timer_timeout():
 
 	# Spawn the mob by adding it to the Main scene.
 	add_child(organic)
+	
+	organic.hit.connect($UserInterface/ScoreLabel._on_enemy_destroyed.bind())
