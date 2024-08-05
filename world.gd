@@ -4,7 +4,7 @@ extends Node
 @onready var bullets = $bullets_shot
 @onready var gunbot = $gunbot
 var score
-var start_wave_speed = [5.0, 20.0]
+var start_wave_speed = [10.0, 30.0]
 
 func _ready():
 	gunbot.connect("bullet_shot", _on_gunbot_bullet_shot)
@@ -18,10 +18,9 @@ func game_over():
 	$OrganicTimer.stop()
 	print('Game Over!')
 	await get_tree().create_timer(3).timeout
-	new_game()
+	get_tree().reload_current_scene()
 	
 func new_game():
-	print('new game...')
 	$gunbot.start($Position.position)
 	$OrganicTimer.start()
 
