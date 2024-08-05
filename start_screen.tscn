@@ -1,0 +1,112 @@
+[gd_scene load_steps=7 format=3 uid="uid://djqb22d7brjmk"]
+
+[ext_resource type="Script" path="res://start_screen.gd" id="1_rujdp"]
+[ext_resource type="Texture2D" uid="uid://cpegtmmdnqyqw" path="res://assets/graphics/gunbot_title_1.jpg" id="2_lo5ff"]
+[ext_resource type="AudioStream" uid="uid://bnruf6ngxlqx7" path="res://assets/background_music/CrashedShip.ogg" id="3_3lfk1"]
+
+[sub_resource type="Animation" id="Animation_4mquo"]
+resource_name = "pic"
+length = 20.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(392, 272), Vector2(488, 240)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 10, 20),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0.0941176, 1, 0.509804, 1), Color(1, 1, 0.509804, 1), Color(0.0941176, 1, 0.509804, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_l8veo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(392, 272)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.0941176, 1, 0.509804, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_six7u"]
+_data = {
+"RESET": SubResource("Animation_l8veo"),
+"pic": SubResource("Animation_4mquo")
+}
+
+[node name="start_screen" type="Node2D"]
+script = ExtResource("1_rujdp")
+
+[node name="Button" type="Button" parent="."]
+z_index = 10
+offset_left = 184.0
+offset_top = 528.0
+offset_right = 303.0
+offset_bottom = 559.0
+text = ">- - - START - - -<"
+
+[node name="Credits" type="Button" parent="."]
+z_index = 10
+offset_left = 184.0
+offset_top = 576.0
+offset_right = 303.0
+offset_bottom = 607.0
+text = "- - - CREDITS - - -"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.0941176, 1, 0.509804, 1)
+position = Vector2(392, 272)
+texture = ExtResource("2_lo5ff")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 208.0
+offset_top = 504.0
+offset_right = 277.0
+offset_bottom = 544.0
+text = "GUNBOT"
+fit_content = true
+autowrap_mode = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_3lfk1")
+autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_six7u")
+}
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_button_pressed"]

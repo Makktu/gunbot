@@ -8,12 +8,12 @@ A work in progress, needless to say.
 
 Project milestones ahead:
 
-Menu screen.
+[x] Menu screen.
 
 Distinctive design for the Gunbot itself.
 
 (With an animation.)
 
-3x enemies (types)
+[ ]3x enemies (types)
 
-
+[x] Game Over/Reset basic working
