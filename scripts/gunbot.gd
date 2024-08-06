@@ -6,7 +6,7 @@ signal hit
 signal bullet_shot(bullet)
 var screen_size # Size of the game window.
 var shot_timer_active = false
-const bullet = preload("res://bullet.tscn")
+const bullet = preload("res://scenes/bullet.tscn")
 var rotation_speed = 0.75
 
 func start(pos):

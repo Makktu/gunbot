@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bx5jfa0rj3eeu"]
 
-[ext_resource type="Script" path="res://organic.gd" id="1_qlyfw"]
-[ext_resource type="Texture2D" uid="uid://b7fhxhrn2mssh" path="res://asteroidpng.png" id="2_ucgop"]
+[ext_resource type="Script" path="res://scripts/organic.gd" id="1_qlyfw"]
+[ext_resource type="Texture2D" uid="uid://b7fhxhrn2mssh" path="res://assets/graphics/asteroidpng.png" id="2_7s7p7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_apnnu"]
 radius = 59.0
@@ -53,7 +53,7 @@ script = ExtResource("1_qlyfw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
-texture = ExtResource("2_ucgop")
+texture = ExtResource("2_7s7p7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-5.15713, 5.00247)

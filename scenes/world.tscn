@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://m63vthakh13d"]
 
-[ext_resource type="PackedScene" uid="uid://ci7omqwvvokar" path="res://gunbot.tscn" id="1_8oxju"]
-[ext_resource type="Script" path="res://world.gd" id="1_u5o0q"]
-[ext_resource type="PackedScene" uid="uid://bx5jfa0rj3eeu" path="res://organic.tscn" id="2_oemh6"]
-[ext_resource type="PackedScene" uid="uid://cwyk7hfwyi5cy" path="res://background_music.tscn" id="4_8l7o7"]
+[ext_resource type="PackedScene" uid="uid://ci7omqwvvokar" path="res://scenes/gunbot.tscn" id="1_8oxju"]
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_u5o0q"]
+[ext_resource type="PackedScene" uid="uid://bx5jfa0rj3eeu" path="res://scenes/organic.tscn" id="2_oemh6"]
+[ext_resource type="PackedScene" uid="uid://cwyk7hfwyi5cy" path="res://scenes/background_music.tscn" id="4_8l7o7"]
 [ext_resource type="Texture2D" uid="uid://spv7cfunw8px" path="res://assets/graphics/nebulaset.png" id="5_p7gei"]
-[ext_resource type="Script" path="res://ScoreLabel.gd" id="6_w0sqm"]
+[ext_resource type="Script" path="res://scripts/ScoreLabel.gd" id="6_w0sqm"]
 
 [sub_resource type="Curve2D" id="Curve2D_51yh6"]
 _data = {
@@ -25,6 +25,10 @@ scale = Vector2(2, 2)
 
 [node name="OrganicTimer" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="SpinMineTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
 
 [node name="Position" type="Marker2D" parent="."]
 position = Vector2(240, 360)
@@ -61,3 +65,4 @@ script = ExtResource("6_w0sqm")
 
 [connection signal="hit" from="gunbot" to="." method="game_over"]
 [connection signal="timeout" from="OrganicTimer" to="." method="_on_organic_timer_timeout"]
+[connection signal="timeout" from="SpinMineTimer" to="." method="_on_spin_mine_timer_timeout"]

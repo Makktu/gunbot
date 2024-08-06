@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chkqxp2x6ok4d"
-path="res://.godot/imported/gunbot.png-3c076a7ece2944fe69247d535aade11d.ctex"
+uid="uid://b7fhxhrn2mssh"
+path="res://.godot/imported/asteroidpng.png-b8b83814c680afc2ccfbd449cf3bd7a8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gunbot.png"
-dest_files=["res://.godot/imported/gunbot.png-3c076a7ece2944fe69247d535aade11d.ctex"]
+source_file="res://assets/graphics/asteroidpng.png"
+dest_files=["res://.godot/imported/asteroidpng.png-b8b83814c680afc2ccfbd449cf3bd7a8.ctex"]
 
 [params]
 
