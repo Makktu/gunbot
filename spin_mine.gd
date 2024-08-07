@@ -22,7 +22,6 @@ func _on_cpu_particles_2d_finished():
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
 
-
 func _on_organic_collision_area_entered(area):
 	print(area.name)
 	if area.name == 'bullet_area':

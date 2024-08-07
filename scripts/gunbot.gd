@@ -26,7 +26,6 @@ func _process(delta):
 func _shoot():
 	var bullet_instance = bullet.instantiate()
 	bullet_instance.global_position = muzzle.global_position
-	#bullet_instance.rotation_degrees = global_rotation_degrees - 90
 	bullet_instance.rotation = rotation
 	emit_signal("bullet_shot", bullet_instance)
 	get_parent().add_child(bullet_instance)
