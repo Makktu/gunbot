@@ -8,12 +8,12 @@ var score
 var start_wave_speed = [10.0, 30.0]
 
 func _ready():
-	gunbot.connect("bullet_shot", _on_gunbot_bullet_shot)
+	#gunbot.connect("bullet_shot", _on_gunbot_bullet_shot)
 	play_random_track()
 	new_game()
 	
-func _on_gunbot_bullet_shot(bullet):
-	bullets.add_child(bullet)
+#func _on_gunbot_bullet_shot(bullet):
+	#bullets.add_child(bullet)
 	
 func game_over():
 	$OrganicTimer.stop()

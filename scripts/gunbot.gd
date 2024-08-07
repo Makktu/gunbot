@@ -14,10 +14,10 @@ func start(pos):
 	show()
 	$CollisionShape2D.disabled = false
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	rotation_degrees += rotation_speed
 	
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_pressed("shoot") and !shot_timer_active:
 		shot_timer_active = true
 		_shoot()
@@ -30,7 +30,7 @@ func _shoot():
 	emit_signal("bullet_shot", bullet_instance)
 	get_parent().add_child(bullet_instance)
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	hide() # Player disappears after being hit.
 	hit.emit()
 	# Must be deferred as we can't change physics properties on a physics callback.
